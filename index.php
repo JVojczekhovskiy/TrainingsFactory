@@ -3,7 +3,7 @@
  * dat is uiterst hinderlijk als je verwacht dat de methode class_exsists true of false returnt
  * dat doet deze methode dan dus niet; er ontstaat een logicexception
  */
-include "ao/php/framework/config.php";
+include "app/config.php";
 function __autoload($className)
 {
     $class = str_replace('\\',DIRECTORY_SEPARATOR,$className);
@@ -14,18 +14,18 @@ function __autoload($className)
 }
 
 
-$control =\filter_input(\INPUT_GET, 'control')?:'bezoeker' ; 
+$control =\filter_input(\INPUT_GET, 'control')?:'bezoeker' ;
 $action = \filter_input(\INPUT_GET, 'action')?:'default' ;
 
 
 try{
-   
+
     $dispatcher = new \ao\php\framework\controls\ControlDispatcher($control, $action);
-    $dispatcher->dispatch(); 
-} 
+    $dispatcher->dispatch();
+}
 catch (ao\php\framework\error\FrameworkException $ex) {
     $error = $ex->getMessage();
-    // zorg zelf e.v.t. voor een fout pagina 
+    // zorg zelf e.v.t. voor een fout pagina
     echo $error;
 }
 catch(\PDOException $e)
@@ -40,5 +40,3 @@ catch(\Exception $e)
    // zorg zelf e.v.t. voor een fout pagina
      echo $error;
 }
-
-
