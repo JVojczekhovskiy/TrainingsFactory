@@ -13,10 +13,24 @@
             <div>
                 <h1>Trainings Centrum Den Haag</h1>
             </div>
-            <div style="float: right;">
-            <input type="text" autocomplete="off" placeholder="vul uw gebuikersnaam in" name="gn" value='<?= isset($gn)?$gn:"";?>' required="required">
-            <input type="password" autocomplete="off" name="ww" placeholder="vul uw wachtwoord in" required="required" >
-            <input type="submit" value="inloggen"><input type="reset" value="reset">
+            <div class="login">
+              <table>
+                <tr>
+                  <td>
+                    <input type="text" autocomplete="off" placeholder="vul uw gebuikersnaam in" name="gn" value='<?= isset($gn)?$gn:"";?>' required="required">
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="password" autocomplete="off" name="ww" placeholder="vul uw wachtwoord in" required="required" >
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="submit" value="inloggen"><input type="reset" value="reset">
+                  </td>
+                </tr>
+            </table>
           </div>
         </header>
         <section>
