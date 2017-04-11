@@ -58,7 +58,9 @@ header figure img{
 header a{
     padding:5px;
 }
-
+.login{
+  float: right;
+}
 nav{
     width:1000px;
     margin: 0px 10px;

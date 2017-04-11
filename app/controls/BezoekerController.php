@@ -91,4 +91,10 @@ class BezoekerController extends AbstractController
 
     }
 
+    protected function lidWordenAction()
+    {
+    
+    }
+
+
 }
