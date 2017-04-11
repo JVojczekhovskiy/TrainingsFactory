@@ -39,7 +39,12 @@ class BezoekerController extends AbstractController
 
     public function lidWordenAction()
     {
-    
+
+    }
+
+    public function regelsAction()
+    {
+
     }
 
 

@@ -23,7 +23,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <input type="password" autocomplete="off" name="ww" placeholder="vul uw wachtwoord in" required="required" >
+                    <input type="password" autocomplete="off" name="ww" placeholder="vul uw wachtwoord in" value='<?= isset($ww)?$ww:"";?>' required="required" >
                   </td>
                 </tr>
                 <tr>
