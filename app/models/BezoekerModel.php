@@ -1,33 +1,10 @@
 <?php
 namespace app\models;
 
-class BezoekerModel
+use ao\php\framework\models\AbstractModel;
+
+class BezoekerModel extends AbstractModel
 {
-    private $control;
-    private $action;
-    private $db;
-
-    public function __construct($control, $action)
-    {
-       $this->control = $control;
-       $this->action = $action;
-       $this->db = new \PDO(DATA_SOURCE_NAME, DB_USERNAME, DB_PASSWORD);
-       $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-    }
-
-    public function isPostLeeg()
-    {
-        return empty($_POST);
-    }
-
-    private function startSessie()
-    {
-        if(!isset($_SESSION))
-        {
-            session_start();
-        }
-    }
-
     public function controleerInloggen()
     {
         $gn=  filter_input(INPUT_POST, 'gn');
@@ -36,17 +13,17 @@ class BezoekerModel
         if ( ($gn!==null) && ($ww!==null) )
         {
 
-             $sql = 'SELECT * FROM `contacten` WHERE `gebruikersnaam` = :gn AND `wachtwoord` = :ww';
-             $sth = $this->db->prepare($sql);
+             $sql = 'SELECT * FROM `person` WHERE `loginname` = :gn AND `password` = :ww';
+             $sth = $this->dbh->prepare($sql);
              $sth->bindParam(':gn',$gn);
              $sth->bindParam(':ww',$ww);
              $sth->execute();
 
-             $result = $sth->fetchAll(\PDO::FETCH_CLASS,__NAMESPACE__.'\db\Contact');
+             $result = $sth->fetchAll(\PDO::FETCH_CLASS,__NAMESPACE__.'\db\Person');
 
              if(count($result) === 1)
              {
-                 $this->startSessie();
+                 $this->startSession();
                  $_SESSION['gebruiker']=$result[0];
                  return REQUEST_SUCCESS;
 
@@ -55,16 +32,4 @@ class BezoekerModel
         }
         return REQUEST_FAILURE_DATA_INCOMPLETE;
     }
-
-
-
-    public function getGebruiker()
-    {
-        if(!isset($_SESSION['gebruiker']))
-        {
-            return NULL;
-        }
-        return $_SESSION['gebruiker'];
-    }
-
 }

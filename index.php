@@ -3,7 +3,7 @@
  * dat is uiterst hinderlijk als je verwacht dat de methode class_exsists true of false returnt
  * dat doet deze methode dan dus niet; er ontstaat een logicexception
  */
-include "app/config.php";
+include "ao/php/framework/config.php";
 function __autoload($className)
 {
     $class = str_replace('\\',DIRECTORY_SEPARATOR,$className);

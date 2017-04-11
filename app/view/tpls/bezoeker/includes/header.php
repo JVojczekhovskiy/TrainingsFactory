@@ -13,6 +13,7 @@
             <div>
                 <h1>Trainings Centrum Den Haag</h1>
             </div>
+            <form action="index.php?action=inloggen" method="POST">
             <div class="login">
               <table>
                 <tr>
@@ -32,5 +33,6 @@
                 </tr>
             </table>
           </div>
+          </form>
         </header>
         <section>
